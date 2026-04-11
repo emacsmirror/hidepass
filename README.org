@@ -1,0 +1,8 @@
+* hidepass - hide password at one or multiple lines
+
+*Version 0.1*
+Emacs package, provide Emacs minor mode for hiding passwords. Org mode is supported.
+
+* Packages for hiding passowrd
+- https://github.com/jekor/hidepw
+- https://github.com/juergenhoetzel/password-mode/
