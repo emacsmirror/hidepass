@@ -3,6 +3,9 @@
 *Version 0.1*
 Emacs package, provide Emacs minor mode for hiding passwords. Org mode is supported.
 
+* Screenshot
+[[https://raw.githubusercontent.com/Anoncheg1/public-share/main/hidepass.png]]
+
 * Packages for hiding password
 - https://github.com/jekor/hidepw
 - https://github.com/juergenhoetzel/password-mode/
