@@ -6,6 +6,32 @@ Emacs package, provide Emacs minor mode for hiding passwords. Org mode is suppor
 * Screenshot
 [[https://raw.githubusercontent.com/Anoncheg1/public-share/main/hidepass.png]]
 
+* Configuration:
+#+begin_src elisp
+(add-to-list 'load-path "path/to/hidepass") ; (optional)
+(require 'hidepass)
+#+end_src
+
+Multiline password is disabled by default, configure it with:
+#+begin_src elisp
+(setopt hidepass-multiline-patterns
+  '(("^#\\+begin_src pass\n" . "^#\\+end_src")
+    ("<secret>" . "</secret>")
+    ("---BEGIN PASSWORD---" . "---END PASSWORD---")))
+#+end_src
+
+* Usage:
+
+M-x hidepass-mode
+
+Or add to a file with passwords atthe  first line :
+: ; -*- eval: (hidepass-mode 1) -*-
+
+* Customization:
+
+: M-x customize-group RET hidepass RET
+
+
 * Packages for hiding password
 - https://github.com/jekor/hidepw
 - https://github.com/juergenhoetzel/password-mode/

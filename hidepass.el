@@ -36,10 +36,21 @@
 ;; (add-to-list 'load-path "path/to/hidepass") ; (optional)
 ;; (require 'hidepass)
 
+;; Multiline password is disabled by default, configure it with:
+;; (setopt hidepass-multiline-patterns
+;;   '(("^#\\+begin_src pass\n" . "^#\\+end_src")
+;;     ("<secret>" . "</secret>")
+;;     ("---BEGIN PASSWORD---" . "---END PASSWORD---")))
+
 ;;; Usage:
+
 ;; M-x hidepass-mode
 ;; or add to a file with passwords atthe  first line :
 ;; ; -*- eval: (hidepass-mode 1) -*-
+
+;;; Customization:
+
+;; M-x customize-group RET hidepass RET
 
 ;;; Code:
 
