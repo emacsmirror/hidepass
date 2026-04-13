@@ -6,6 +6,7 @@
 ;; URL: https://codeberg.org/Anoncheg/emacs-hidepass
 ;; Version: 0.1
 ;; Created: 11 apr 2026
+;; Package-Requires: ((emacs "27.2"))
 ;; SPDX-License-Identifier: AGPL-3.0-or-later
 
 ;;; License
@@ -30,7 +31,7 @@
 
 ;;; Commentary:
 
-;;; Configuration:
+;; Configuration:
 
 ;; (add-to-list 'load-path "path/to/hidepass") ; (optional)
 ;; (require 'hidepass)
@@ -81,7 +82,8 @@ Case are ignored."
 
 
 (defun hidepass--match-multiline-block (limit)
-  "Reliable multiline matcher that supports line-by-line selection."
+  "Reliable multiline matcher that supports line-by-line selection.
+Argument LIMIT bounds the search is font-lock specific."
   (let ((case-fold-search t)
         (start-pt (point))
         best-match)
