@@ -12,12 +12,9 @@ Emacs package, provide Emacs minor mode for hiding passwords. Org mode is suppor
 (require 'hidepass)
 #+end_src
 
-Multiline password is disabled by default, configure it with:
+Multiline password is enabled by default, if any problem set it nil:
 #+begin_src elisp
-(setopt hidepass-multiline-patterns
-  '(("^#\\+begin_src pass\n" . "^#\\+end_src")
-    ("<secret>" . "</secret>")
-    ("---BEGIN PASSWORD---" . "---END PASSWORD---")))
+(setopt hidepass-multiline-patterns nil)
 #+end_src
 
 * Usage:
