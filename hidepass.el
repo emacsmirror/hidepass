@@ -82,11 +82,11 @@
   :group 'hidepass)
 
 (defcustom hidepass-multiline-patterns
-  '(("^[ \t]*#\\+begin_src pass\n" . "^[ \t]*#\\+end_src")
+  '(("^[ \t]*#\\+begin_src pass" . "^[ \t]*#\\+end_src")
     ("<secret>" . "</secret>")
     ("^[ \t]*-----BEGIN CERTIFICATE-----" .
      "^[ \t]*-----END CERTIFICATE-----")
-    ("^[ \t]*```pass" .
+    ("^[ \t]*```pass\n" .
      "^[ \t]*```")
     ("^[ \t]*-----BEGIN OPENSSH PRIVATE KEY-----" .
      "^[ \t]*-----END OPENSSH PRIVATE KEY-----"))
