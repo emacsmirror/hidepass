@@ -36,11 +36,8 @@
 ;; (add-to-list 'load-path "path/to/hidepass") ; (optional)
 ;; (require 'hidepass)
 
-;; Multiline password is disabled by default, configure it with:
-;; (setopt hidepass-multiline-patterns
-;;   '(("^#\\+begin_src pass\n" . "^#\\+end_src")
-;;     ("<secret>" . "</secret>")
-;;     ("---BEGIN PASSWORD---" . "---END PASSWORD---")))
+;; Multiline password is enabled by default, if any problem set it nil:
+;; (setopt hidepass-multiline-patterns nil)
 
 ;;; Usage:
 
@@ -84,10 +81,15 @@
   :type '(repeat regexp)
   :group 'hidepass)
 
-(defcustom hidepass-multiline-patterns nil
-  ;; '(("^#\\+begin_src pass\n" . "^#\\+end_src")
-  ;;   ("<secret>" . "</secret>")
-  ;;   ("---BEGIN PASSWORD---" . "---END PASSWORD---"))
+(defcustom hidepass-multiline-patterns
+  '(("^[ \t]*#\\+begin_src pass\n" . "^[ \t]*#\\+end_src")
+    ("<secret>" . "</secret>")
+    ("^[ \t]*-----BEGIN CERTIFICATE-----" .
+     "^[ \t]*-----END CERTIFICATE-----")
+    ("^[ \t]*```pass" .
+     "^[ \t]*```")
+    ("^[ \t]*-----BEGIN OPENSSH PRIVATE KEY-----" .
+     "^[ \t]*-----END OPENSSH PRIVATE KEY-----"))
   "List of (START-REGEXP . END-REGEXP) for multiline masking.
 The text between these two regexps will be hidden.
 Case are ignored."
