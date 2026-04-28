@@ -74,9 +74,9 @@
   "Settings for hiding passwords."
   :group 'hidepass)
 
-(defcustom hidepass-patterns '("[pP]ass:? \\(.+\\)$"
-                               "[lL]ogin:? \\(.+\\)$"
-                               "[tT]oken:? \\(.+\\)$")
+(defcustom hidepass-patterns '("[pP]ass:? +\\(.+\\)$"
+                               "[lL]ogin:? +\\(.+\\)$"
+                               "[tT]oken:? +\\(.+\\)$")
   "Regex patterns with one capturing group."
   :type '(repeat regexp)
   :group 'hidepass)
@@ -185,8 +185,20 @@ Argument LIMIT bounds the search is font-lock specific."
 
 (defun hidepass-off ()
   "Remove keywords from font-locks and refresh."
+  ;; 1. Stop Font-lock from looking for the patterns
   (font-lock-remove-keywords nil (hidepass-font-lock-keywords))
-  (font-lock-flush))
+  ;; 2. Physically strip the 'display' property from the text
+  (save-restriction
+    (widen)
+    (with-silent-modifications
+      (remove-text-properties (point-min) (point-max) '(display nil))))
+  ;; 3. Clean up the managed props list so we don't interfere with other modes
+  (setq-local font-lock-extra-managed-props
+              (delete 'display font-lock-extra-managed-props))
+  ;; 4. Refresh the buffer visuals
+  (font-lock-flush)
+  (font-lock-ensure))
+
 
 ;;;###autoload
 (define-minor-mode hidepass-mode
