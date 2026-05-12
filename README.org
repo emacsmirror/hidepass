@@ -1,6 +1,6 @@
 * hidepass - hide password at one or multiple lines
 
-*Version 0.1*
+*Version 0.2*
 Emacs package, provide Emacs minor mode for hiding passwords. Org mode is supported.
 
 * Screenshot

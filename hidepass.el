@@ -4,7 +4,7 @@
 ;; Author: <github.com/Anoncheg1,codeberg.org/Anoncheg>
 ;; Keywords: hide, hidden, password, faces
 ;; URL: https://codeberg.org/Anoncheg/emacs-hidepass
-;; Version: 0.1
+;; Version: 0.2
 ;; Created: 11 apr 2026
 ;; Package-Requires: ((emacs "27.2"))
 ;; SPDX-License-Identifier: AGPL-3.0-or-later
